@@ -9,6 +9,8 @@ using namespace std;
 
 class AVLTree {
 
+private:
+
 public:
 
     AVLTree();
@@ -26,11 +28,5 @@ public:
     string find(int key, string thing) const;
 
     vector<string> findRange(int keyStart, int keyEnd) const;
-
-private:
-
-
-
-
 
 };
