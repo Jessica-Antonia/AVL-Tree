@@ -1,3 +1,6 @@
+//CS3100 Project 4
+//Jessica Venema
+
 #include "AVLTree.h"
 #include <iostream>
 #include <string>
