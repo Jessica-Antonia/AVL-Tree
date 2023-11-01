@@ -11,6 +11,26 @@ class AVLTree {
 
 private:
 
+    class Node {
+
+    public: 
+
+        Node* parent;
+        Node* rightChild;
+        Node* leftChild;
+
+        int key;
+        string thing;
+
+        
+
+
+    };
+
+    int size = 0;
+    int height = 0;
+    Node* root = nullptr;
+
 public:
 
     AVLTree();
