@@ -1,6 +1,7 @@
 //CS3100 Project 4
 //Jessica Venema
 
+#include "AVLNode.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -22,14 +23,14 @@ private:
         int key;
         string thing;
 
-        
+
 
 
     };
 
     int size = 0;
     int height = 0;
-    Node* root = nullptr;
+    AVLNode* root = nullptr;
 
 public:
 
