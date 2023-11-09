@@ -10,8 +10,12 @@ using namespace std;
 
 
 int main() {
-	
-	
+
+	AVLNode aNode;
+	AVLNode anotherNode(2, "bucky");
+
+	cout << aNode << endl;
+	cout << anotherNode << endl;
 
 	// AVLTree tree;
 	// cout << tree.insert(50, "Fifty");
