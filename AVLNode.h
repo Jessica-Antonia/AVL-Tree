@@ -7,19 +7,16 @@ using namespace std;
 
 class AVLNode {
 
-private:
-
-
 public:
+
+    int key = 0;
+    int height = 0;
+    string thing = "";
+    AVLNode* left = nullptr;
+    AVLNode* right = nullptr;
 
     AVLNode();
 
     AVLNode(int key, string thing);
-
-    AVLNode(const AVLNode& n);
-
-    ~AVLNode();
-
-    
 
 };
