@@ -8,8 +8,8 @@
 /// nullptr.
 AVLNode::AVLNode():
     key(-1),
-    thing("-1"),
     height(-1),
+    thing("-1"),
     left(nullptr),
     right(nullptr)    
 
@@ -21,8 +21,8 @@ AVLNode::AVLNode():
 /// @param aThing The string value.
 AVLNode::AVLNode(int aKey, string aThing):
     key(aKey),
-    thing(aThing),
     height(1),
+    thing(aThing),
     left(nullptr),
     right(nullptr)    
 
