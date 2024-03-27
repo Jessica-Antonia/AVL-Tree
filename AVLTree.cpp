@@ -21,21 +21,24 @@ AVLTree::~AVLTree() {
 
 void AVLTree::insert(int key, string thing) {
 
-    if (root == nullptr)
+    AVLNode* current = root;
+
+    if (current == nullptr)
     {
         AVLNode* aNode = new AVLNode(key, thing);
         root = aNode;
         size++;
-    }
-
-    AVLNode* current = root;
-    AVLNode* aNode = new AVLNode(key, thing);
-    if (current.key > aNode.key)
-    {
-        
+    } else if (current->key > key) {
+        AVLNode* aNode = new AVLNode(key, thing);
         current->left = aNode;
+        size++;
+    } else if (current->key < key) {
+        AVLNode* aNode = new AVLNode(key, thing);
+        current->right = aNode;
+        size++;
+    } else {
+        cout << "Not inserted into the Tree. Duplicate found." << endl;
     }
-    
 
 };
 
@@ -72,6 +75,7 @@ void AVLTree::reverseOrderTraversal(AVLNode* currentNode) const {
     {
         return;
     }
+
     reverseOrderTraversal(currentNode->right);
     reverseOrderTraversal(currentNode->left);
     print(currentNode);

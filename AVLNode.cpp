@@ -34,8 +34,15 @@ AVLNode::AVLNode(int aKey, string aThing):
 /// @param os The ostream object.
 void AVLNode::print(ostream& os) const {
 
-    os << "key: " << this->key << ", string: " << this->thing << ", height: " 
-        << this->height << ", balance: " << this->balance << endl;
+    string tabThings;
+
+    for (size_t i = 0; i < this->height; i++)
+    {
+        tabThings.append("\t");
+    }
+    
+    os << tabThings << "key: " << this->key << ", string: " << this->thing <<
+        ", height: " << this->height << ", balance: " << this->balance << endl;
 }
 
 /// The operator overloading function allows printing for testing.

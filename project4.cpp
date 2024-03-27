@@ -11,22 +11,21 @@ using namespace std;
 
 int main() {
 
-	AVLNode aNode;
-	AVLNode anotherNode(2, "bucky");
-
-	cout << aNode << endl;
-	cout << anotherNode << endl;
+	// AVLNode aNode;
+	// AVLNode anotherNode(2, "bucky");
+	// cout << aNode << endl;
+	// cout << anotherNode << endl;
 
 	AVLTree tree;
 	cout << tree.getSize() << endl;
 	cout << tree << endl;
+	tree.insert(2, "cat");
+	cout << tree.getSize() << endl;
 	tree.insert(1, "dog");
 	cout << tree.getSize() << endl;
-	cout << tree << endl;
-
-	tree.insert(2, "cat");
 	tree.insert(3, "horse");
 	cout << tree << endl;
+	cout << tree.getSize() << endl;
 
 	// AVLTree tree;
 	// cout << tree.insert(50, "Fifty");
