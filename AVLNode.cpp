@@ -34,7 +34,7 @@ AVLNode::AVLNode(int aKey, string aThing):
 /// @param os The ostream object.
 void AVLNode::print(ostream& os) const {
 
-    cout << "key: " << this->key << ", string: " << this->thing << ", height: " 
+    os << "key: " << this->key << ", string: " << this->thing << ", height: " 
         << this->height << ", balance: " << this->balance << endl;
 }
 

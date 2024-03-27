@@ -17,7 +17,16 @@ int main() {
 	cout << aNode << endl;
 	cout << anotherNode << endl;
 
-	
+	AVLTree tree;
+	cout << tree.getSize() << endl;
+	cout << tree << endl;
+	tree.insert(1, "dog");
+	cout << tree.getSize() << endl;
+	cout << tree << endl;
+
+	tree.insert(2, "cat");
+	tree.insert(3, "horse");
+	cout << tree << endl;
 
 	// AVLTree tree;
 	// cout << tree.insert(50, "Fifty");

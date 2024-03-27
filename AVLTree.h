@@ -33,6 +33,12 @@ public:
 
     vector<string> findRange(int keyStart, int keyEnd) const;
 
+    void print(AVLNode* printNode) const;
+
+    void reverseOrderTraversal(AVLNode* currentNode) const;
+
+    void reverseOrderTraversalPrint(ostream& os, AVLNode* currentNode) const ;
+
     //Ostream modifer for printing.
     friend ostream& operator<<(ostream& os, const AVLTree& tree);
 
