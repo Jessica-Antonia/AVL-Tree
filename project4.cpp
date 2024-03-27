@@ -17,6 +17,8 @@ int main() {
 	cout << aNode << endl;
 	cout << anotherNode << endl;
 
+	
+
 	// AVLTree tree;
 	// cout << tree.insert(50, "Fifty");
 	// // This should print 0, because it returns false (no duplicates allowed):

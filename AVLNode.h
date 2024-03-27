@@ -10,11 +10,12 @@ using namespace std;
 /// included print and ostream functions for testing the class. 
 class AVLNode {
 
-public:
+public: 
 
     //Public variables for the AVLNode object.
     int key = 0;
     int height = 0;
+    int balance = 0;
     string thing = "";
     AVLNode* left = nullptr;
     AVLNode* right = nullptr;

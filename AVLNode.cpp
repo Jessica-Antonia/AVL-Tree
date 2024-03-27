@@ -9,6 +9,7 @@
 AVLNode::AVLNode():
     key(-1),
     height(-1),
+    balance(-1),
     thing("-1"),
     left(nullptr),
     right(nullptr)    
@@ -21,7 +22,8 @@ AVLNode::AVLNode():
 /// @param aThing The string value.
 AVLNode::AVLNode(int aKey, string aThing):
     key(aKey),
-    height(1),
+    height(0),
+    balance(0),
     thing(aThing),
     left(nullptr),
     right(nullptr)    
@@ -32,7 +34,8 @@ AVLNode::AVLNode(int aKey, string aThing):
 /// @param os The ostream object.
 void AVLNode::print(ostream& os) const {
 
-    cout << this->key << ", " << this->thing << ", " << this->height << endl;
+    cout << "key: " << this->key << ", string: " << this->thing << ", height: " 
+        << this->height << ", balance: " << this->balance << endl;
 }
 
 /// The operator overloading function allows printing for testing.
