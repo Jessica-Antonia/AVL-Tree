@@ -5,7 +5,6 @@
 
 AVLTree::AVLTree() {
 
-
 };
 
 AVLTree::AVLTree(const AVLTree& t) {
@@ -26,34 +25,40 @@ bool AVLTree::insertHelper(AVLNode*& current, int key, string thing) {
         AVLNode* aNode = new AVLNode(key, thing);
         current = aNode;
         size++;
+        
         return true;
-        
-        // if (key < lastKey) {
-        //     current->left = aNode;
-        //     return true;
-        // } else if (key > lastKey) {
-        //     current->right = aNode;
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-        
+                
     } else if (key < current->key) {
-        insertHelper(current->left, key, thing);
-        //return true;
+        
+        return insertHelper(current->left, key, thing);
     } else if (key > current->key) {
-        insertHelper(current->right, key, thing);
-        //return true;
+        
+        return insertHelper(current->right, key, thing);
     } else {
         return false;
     }
+
+    current->height = AVLTreeUpdateHeight(current);
 };
 
 bool AVLTree::insert(int key, string thing) {
 
-    bool didItWork;
-    didItWork = insertHelper(root, key, thing);
-    return didItWork;
+    return insertHelper(root, key, thing);
+};
+
+int AVLTree::AVLTreeUpdateHeight(AVLNode*& node) {
+
+    int leftHeight = -1;
+    if (node->left != nullptr)
+    {
+        leftHeight = node->left->height;
+    }
+    int rightHeight = -1;
+    if (node->right != nullptr) {
+        rightHeight = node->right->height;
+    }
+    
+    return node->height = max(leftHeight, rightHeight) + 1;  
 };
 
 int AVLTree::getSize() const {

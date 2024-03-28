@@ -28,6 +28,8 @@ public:
 
     bool insert(int key, string thing);
 
+    int AVLTreeUpdateHeight(AVLNode*& node);
+
     int getSize() const;
 
     int getHeight() const;

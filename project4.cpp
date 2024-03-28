@@ -26,6 +26,7 @@ int main() {
 	cout << "\n\n";
 	cout << tree << endl;
 	cout << tree.getSize() << endl;
+	cout << tree.getHeight() << endl;
 
 	// cout << tree.insert(40, "Fourty");
 	// cout << tree.insert(30, "Thirty");//single rotate right
