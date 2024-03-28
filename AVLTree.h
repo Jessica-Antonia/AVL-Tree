@@ -23,13 +23,15 @@ public:
 
     ~AVLTree();
 
-    void insert(int key, string thing);
+    bool insertHelper(int key, string thing);
+
+    bool insert(int key, string thing);
 
     int getSize() const;
 
     int getHeight() const;
 
-    string find(int key, string thing) const;
+    bool find(int key, string thing) const;
 
     vector<string> findRange(int keyStart, int keyEnd) const;
 
