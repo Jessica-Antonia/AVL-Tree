@@ -38,7 +38,7 @@ void AVLNode::print(ostream& os) const {
 
     for (size_t i = 0; i < (size_t)this->height; i++)
     {
-        tabThings.append("\t");
+        tabThings += "\t";
     }
     
     os << tabThings << "key: " << this->key << ", string: " << this->thing <<

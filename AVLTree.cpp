@@ -20,30 +20,38 @@ AVLTree::~AVLTree() {
 
 bool AVLTree::insertHelper(AVLNode*& current, int key, string thing) {
     
+    bool inserted = false;
+
     if (current == nullptr)
     {
         AVLNode* aNode = new AVLNode(key, thing);
         current = aNode;
         size++;
-        
-        return true;
+        inserted = true;
                 
     } else if (key < current->key) {
         
-        return insertHelper(current->left, key, thing);
+        inserted = insertHelper(current->left, key, thing);
     } else if (key > current->key) {
         
-        return insertHelper(current->right, key, thing);
+        inserted = insertHelper(current->right, key, thing);
     } else {
         return false;
     }
 
-    current->height = AVLTreeUpdateHeight(current);
+    if (inserted == true)
+    {
+        current->height = AVLTreeUpdateHeight(current);
+    }
+    
+    return inserted;
 };
 
 bool AVLTree::insert(int key, string thing) {
 
-    return insertHelper(root, key, thing);
+    bool inserted = insertHelper(root, key, thing);
+    height = AVLTreeUpdateHeight(root);
+    return inserted;
 };
 
 int AVLTree::AVLTreeUpdateHeight(AVLNode*& node) {
