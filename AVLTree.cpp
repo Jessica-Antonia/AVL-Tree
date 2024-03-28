@@ -19,36 +19,40 @@ AVLTree::~AVLTree() {
 
 };
 
-bool AVLTree::insertHelper(int key, string thing) {
+bool AVLTree::insertHelper(AVLNode*& current, int key, string thing) {
     
-    AVLNode* current = root;
-    bool didItWork = false;
-    if (root == nullptr)
+    if (current == nullptr)
     {
         AVLNode* aNode = new AVLNode(key, thing);
-        root = aNode;
+        current = aNode;
         size++;
-        didItWork = true;
-    } else if (current->key > key) {
-        AVLNode* aNode = new AVLNode(key, thing);
-        current->left = aNode;
-        size++;
-        didItWork = true;
-    } else if (current->key < key) {
-        AVLNode* aNode = new AVLNode(key, thing);
-        current->right = aNode;
-        size++;
-        didItWork = true;
+        return true;
+        
+        // if (key < lastKey) {
+        //     current->left = aNode;
+        //     return true;
+        // } else if (key > lastKey) {
+        //     current->right = aNode;
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+        
+    } else if (key < current->key) {
+        insertHelper(current->left, key, thing);
+        //return true;
+    } else if (key > current->key) {
+        insertHelper(current->right, key, thing);
+        //return true;
     } else {
-        cout << "Not inserted into the Tree. Duplicate found." << endl;
+        return false;
     }
-    return didItWork;
 };
 
 bool AVLTree::insert(int key, string thing) {
 
     bool didItWork;
-    didItWork = insertHelper(key, thing);
+    didItWork = insertHelper(root, key, thing);
     return didItWork;
 };
 
@@ -59,8 +63,7 @@ int AVLTree::getSize() const {
 
 int AVLTree::getHeight() const {
 
-
-
+    return height;
 };
 
 bool AVLTree::find(int key, string thing) const {

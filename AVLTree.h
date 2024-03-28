@@ -13,6 +13,7 @@ class AVLTree {
 private:
 
     int size = 0;
+    int height = 0;
     AVLNode* root = nullptr;
 
 public:
@@ -23,7 +24,7 @@ public:
 
     ~AVLTree();
 
-    bool insertHelper(int key, string thing);
+    bool insertHelper(AVLNode*& current, int key, string thing);
 
     bool insert(int key, string thing);
 
