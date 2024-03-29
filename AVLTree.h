@@ -28,15 +28,13 @@ public:
 
     bool insert(int key, string thing);
 
-    int balance(AVLNode*& node);
+    int getBalance(AVLNode* node);
 
-    int AVLTreeUpdateHeight(AVLNode*& node);
+    int AVLTreeUpdateHeight(AVLNode* node);
 
     int getSize() const;
 
     int getHeight() const;
-
-    int findHelper(AVLNode* current, int key);
 
     bool find(int key, string& thing) const;
 

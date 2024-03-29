@@ -20,9 +20,13 @@ AVLTree::~AVLTree() {
 
 AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
     
+    int balanceFactor = 0;
+
     if (node == nullptr)
     {
         node = newestNode;
+        return node;
+
     } else if (newestNode->key < node->key) {
         node->left = insertHelper(node->left, newestNode);
     } else if (newestNode->key > node->key)
@@ -32,6 +36,10 @@ AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
         cout << "No dupes!" << endl;
         return node;
     }
+
+    AVLTreeUpdateHeight(node);
+    balanceFactor = getBalance(node);
+    cout << balanceFactor << endl;
     
     return node;
 };
@@ -39,8 +47,6 @@ AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
 bool AVLTree::insert(int key, string thing) {
 
     bool existingKey = find(key, thing);
-
-    cout << "Before insertHelper: root is " << (root ? "not null" : "null") << endl;
 
     if (existingKey == true)
     {
@@ -52,24 +58,24 @@ bool AVLTree::insert(int key, string thing) {
     }
 
     
-    cout << "After insertHelper: root is " << (root ? "not null" : "null") << endl;
-    
     return true;
 };
 
-int AVLTree::balance(AVLNode*& current) {
+int AVLTree::getBalance(AVLNode* current) {
 
     if (current == nullptr)
     {
         return 0;
-    } else {
-
-        return (AVLTreeUpdateHeight(current->left) - AVLTreeUpdateHeight(current->right));
+    } else if (current->left != nullptr && current->right != nullptr)
+    {
+        return (AVLTreeUpdateHeight(current->left) - 
+                AVLTreeUpdateHeight(current->right));
     }
-    
+
+    return 0;    
 }
 
-int AVLTree::AVLTreeUpdateHeight(AVLNode*& current) {
+int AVLTree::AVLTreeUpdateHeight(AVLNode* current) {
 
     int leftHeight = -1;
     if ((current != nullptr) && (current->left != nullptr))
@@ -92,12 +98,6 @@ int AVLTree::getSize() const {
 int AVLTree::getHeight() const {
 
     return height;
-};
-
-int AVLTree::findHelper(AVLNode* current, int key) {
-
-
-    return key;
 };
 
 bool AVLTree::find(int key, string& thing) const {
