@@ -24,7 +24,7 @@ public:
 
     ~AVLTree();
 
-    AVLNode*& insertHelper(AVLNode*& node, AVLNode*& current);
+    AVLNode* insertHelper(AVLNode*& node, AVLNode*& current);
 
     bool insert(int key, string thing);
 

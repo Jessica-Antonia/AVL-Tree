@@ -14,19 +14,19 @@ int main() {
 	AVLTree tree;
 	cout << tree.getSize() << endl;
 	cout << tree << endl;
-	// tree.insert(2, "cat");
-	// tree.insert(1, "dog");
-	// tree.insert(3, "horse");
+	tree.insert(2, "cat");
+	tree.insert(1, "dog");
+	tree.insert(3, "horse");
 
-	// cout << tree.insert(50, "Fifty");
-	// // This should print 0, because it returns false (no duplicates allowed):
-	// cout << tree.insert(50, "Another fifty");
-	// cout << tree.insert(100, "One hundred");
-	// cout << tree.insert(200, "Two hundred");//single rotate left
-	// cout << "\n\n";
-	// cout << tree << endl;
-	// cout << tree.getSize() << endl;
-	// cout << tree.getHeight() << endl;
+	cout << tree.insert(50, "Fifty");
+	// This should print 0, because it returns false (no duplicates allowed):
+	cout << tree.insert(50, "Another fifty");
+	cout << tree.insert(100, "One hundred");
+	cout << tree.insert(200, "Two hundred");//single rotate left
+	cout << "\n\n";
+	cout << tree << endl;
+	cout << tree.getSize() << endl;
+	cout << tree.getHeight() << endl;
 
 	// cout << tree.insert(40, "Fourty");
 	// cout << tree.insert(30, "Thirty");//single rotate right

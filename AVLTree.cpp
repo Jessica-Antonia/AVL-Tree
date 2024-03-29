@@ -18,29 +18,43 @@ AVLTree::~AVLTree() {
 
 };
 
-AVLNode*& AVLTree::insertHelper(AVLNode*& node, AVLNode*& current) {
+AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
     
-    
-    
+    if (node == nullptr)
+    {
+        node = newestNode;
+    } else if (newestNode->key < node->key) {
+        node->left = insertHelper(node->left, newestNode);
+    } else if (newestNode->key > node->key)
+    {
+        node->right = insertHelper(node->right, newestNode);
+    } else {
+        cout << "No dupes!" << endl;
+        return node;
+    }
     
     return node;
 };
 
 bool AVLTree::insert(int key, string thing) {
 
-    bool inserted = false;
-    bool existingKey = false;
+    bool existingKey = find(key, thing);
 
-    AVLNode* newestNode = new AVLNode(key, thing);
+    cout << "Before insertHelper: root is " << (root ? "not null" : "null") << endl;
 
-    insertHelper(root, newestNode);
+    if (existingKey == true)
+    {
+        return false;
+    } else {
+        
+        AVLNode* newestNode = new AVLNode(key, thing);
+        insertHelper(root, newestNode);
+    }
+
     
-    // if (inserted == true)
-    // {
-    //     height = AVLTreeUpdateHeight(root);
-    // }
+    cout << "After insertHelper: root is " << (root ? "not null" : "null") << endl;
     
-    return inserted;
+    return true;
 };
 
 int AVLTree::balance(AVLNode*& current) {
