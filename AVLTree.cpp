@@ -18,55 +18,56 @@ AVLTree::~AVLTree() {
 
 };
 
-bool AVLTree::insertHelper(AVLNode*& current, int key, string thing) {
+AVLNode*& AVLTree::insertHelper(AVLNode*& node, AVLNode*& current) {
     
-    bool inserted = false;
-
-    if (current == nullptr)
-    {
-        AVLNode* aNode = new AVLNode(key, thing);
-        current = aNode;
-        size++;
-        inserted = true;
-                
-    } else if (key < current->key) {
-        
-        inserted = insertHelper(current->left, key, thing);
-    } else if (key > current->key) {
-        
-        inserted = insertHelper(current->right, key, thing);
-    } else {
-        return false;
-    }
-
-    if (inserted == true)
-    {
-        current->height = AVLTreeUpdateHeight(current);
-    }
     
-    return inserted;
+    
+    
+    return node;
 };
 
 bool AVLTree::insert(int key, string thing) {
 
-    bool inserted = insertHelper(root, key, thing);
-    height = AVLTreeUpdateHeight(root);
+    bool inserted = false;
+    bool existingKey = false;
+
+    AVLNode* newestNode = new AVLNode(key, thing);
+
+    insertHelper(root, newestNode);
+    
+    // if (inserted == true)
+    // {
+    //     height = AVLTreeUpdateHeight(root);
+    // }
+    
     return inserted;
 };
 
-int AVLTree::AVLTreeUpdateHeight(AVLNode*& node) {
+int AVLTree::balance(AVLNode*& current) {
 
-    int leftHeight = -1;
-    if (node->left != nullptr)
+    if (current == nullptr)
     {
-        leftHeight = node->left->height;
-    }
-    int rightHeight = -1;
-    if (node->right != nullptr) {
-        rightHeight = node->right->height;
+        return 0;
+    } else {
+
+        return (AVLTreeUpdateHeight(current->left) - AVLTreeUpdateHeight(current->right));
     }
     
-    return node->height = max(leftHeight, rightHeight) + 1;  
+}
+
+int AVLTree::AVLTreeUpdateHeight(AVLNode*& current) {
+
+    int leftHeight = -1;
+    if ((current != nullptr) && (current->left != nullptr))
+    {
+        leftHeight = current->left->height;
+    }
+    int rightHeight = -1;
+    if ((current != nullptr) && (current->right != nullptr)) {
+        rightHeight = current->right->height;
+    }
+    
+    return current->height = max(leftHeight, rightHeight) + 1;  
 };
 
 int AVLTree::getSize() const {
@@ -79,10 +80,28 @@ int AVLTree::getHeight() const {
     return height;
 };
 
-bool AVLTree::find(int key, string thing) const {
+int AVLTree::findHelper(AVLNode* current, int key) {
 
 
+    return key;
+};
 
+bool AVLTree::find(int key, string& thing) const {
+
+    AVLNode* current = root;
+    
+    while (current != nullptr)
+    {
+        if (current->key == key) {
+            thing = current->thing;
+            return true;
+        } else if (key < current->key) {
+            current = current->left;
+        } else if (key > current->key) {
+            current = current->right;
+        }
+    }
+    return false;
 };
 
 vector<string> AVLTree::findRange(int keyStart, int keyEnd) const {

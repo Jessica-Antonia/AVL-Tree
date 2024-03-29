@@ -24,9 +24,11 @@ public:
 
     ~AVLTree();
 
-    bool insertHelper(AVLNode*& current, int key, string thing);
+    AVLNode*& insertHelper(AVLNode*& node, AVLNode*& current);
 
     bool insert(int key, string thing);
+
+    int balance(AVLNode*& node);
 
     int AVLTreeUpdateHeight(AVLNode*& node);
 
@@ -34,7 +36,9 @@ public:
 
     int getHeight() const;
 
-    bool find(int key, string thing) const;
+    int findHelper(AVLNode* current, int key);
+
+    bool find(int key, string& thing) const;
 
     vector<string> findRange(int keyStart, int keyEnd) const;
 
