@@ -77,8 +77,11 @@ AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
         return node;
     }
 
-    AVLTreeUpdateHeight(node);
+    cout << node->key << endl;
+    balanceFactor = AVLTreeUpdateHeight(node);
+    cout << "Height: " << balanceFactor << endl;
     balanceFactor = getBalance(node);
+    cout << "BF: " << balanceFactor << endl;
     
     return node;
 };
@@ -107,32 +110,43 @@ bool AVLTree::insert(int key, string thing) {
 /// @brief Calculates the balance of each node.
 /// @param node The node in question.
 /// @return The balance as an integer.
-int AVLTree::getBalance(AVLNode* current) {
+int AVLTree::getBalance(AVLNode*& current) {
+
+    int balanceFactor = 0;
+    int noLeftNode = -1;
+    int noRightNode = -1;
 
     if (current == nullptr)
     {
-        return 0;
+        return current->balance = balanceFactor;
+    } else if (current->left != nullptr && current->right == nullptr)
+    {
+        return current->balance = (AVLTreeUpdateHeight(current->left) - noRightNode);
+    } else if (current->left == nullptr && current->right != nullptr)
+    {
+        return current->balance = (noLeftNode - AVLTreeUpdateHeight(current->right));
     } else if (current->left != nullptr && current->right != nullptr)
     {
-        return (AVLTreeUpdateHeight(current->left) - 
+        return current->balance = (AVLTreeUpdateHeight(current->left) - 
                 AVLTreeUpdateHeight(current->right));
     }
-
-    return 0;    
+    
+    return balanceFactor;    
 }
 
 /// @brief Calculates and updates the height of a node.
 /// @param current The node to be updated.
 /// @return The height to be returned.
-int AVLTree::AVLTreeUpdateHeight(AVLNode* current) {
+int AVLTree::AVLTreeUpdateHeight(AVLNode*& current) {
 
     int leftHeight = -1;
-    if ((current != nullptr) && (current->left != nullptr))
-    {
+    if ((current != nullptr) && (current->left != nullptr)){
+
         leftHeight = current->left->height;
     }
     int rightHeight = -1;
     if ((current != nullptr) && (current->right != nullptr)) {
+
         rightHeight = current->right->height;
     }
     
@@ -200,8 +214,8 @@ void AVLTree::reverseOrderTraversal(AVLNode* currentNode) const {
     }
 
     reverseOrderTraversal(currentNode->right);
-    reverseOrderTraversal(currentNode->left);
     print(currentNode);
+    reverseOrderTraversal(currentNode->left);
 };
 
 /// @brief The printing function used by overloading the << operator.

@@ -53,12 +53,12 @@ public:
     /// @brief Calculates the balance of each node.
     /// @param node The node in question.
     /// @return The balance as an integer.
-    int getBalance(AVLNode* node);
+    int getBalance(AVLNode*& node);
 
     /// @brief Calculates and updates the height of a node.
     /// @param node The node to be updated.
     /// @return The height to be returned.
-    int AVLTreeUpdateHeight(AVLNode* node);
+    int AVLTreeUpdateHeight(AVLNode*& node);
 
     /// @brief The total number of nodes in the tree.
     /// @return The integer for the number of nodes.

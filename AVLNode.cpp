@@ -34,11 +34,12 @@ AVLNode::AVLNode(int aKey, string aThing):
 /// @param os The ostream object.
 void AVLNode::print(ostream& os) const {
 
-    string tabThings;
+    string tabThings = "\t\t\t\t\t\t\t\t";
 
     for (size_t i = 0; i < (size_t)this->height; i++)
     {
-        tabThings += "\t";
+        tabThings.pop_back();
+        tabThings.pop_back();
     }
     
     os << tabThings << "key: " << this->key << ", string: " << this->thing <<
