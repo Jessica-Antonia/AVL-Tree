@@ -9,13 +9,41 @@ AVLTree::AVLTree() {
 
 AVLTree::AVLTree(const AVLTree& t) {
 
+    AVLNode* copyMe = t.root;
 
+    copyHelper(copyMe);
 };
 
 AVLTree::~AVLTree() {
 
+    clear(root);
+};
 
+void AVLTree::clear(AVLNode* killMe) {
 
+    if (killMe == nullptr)
+    {
+        root = nullptr;
+        size = 0;
+        height = 0;
+        return;
+    }
+    
+    clear(killMe->right);
+    clear(killMe->left);
+    delete killMe;
+};
+
+void AVLTree::copyHelper(AVLNode*& copyMe) {
+
+    if (copyMe == nullptr)
+    {
+        return;
+    }
+    
+    copyHelper(copyMe->right);
+    copyHelper(copyMe->left);
+    insert(copyMe->key, copyMe->thing);
 };
 
 AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
@@ -39,7 +67,6 @@ AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
 
     AVLTreeUpdateHeight(node);
     balanceFactor = getBalance(node);
-    cout << balanceFactor << endl;
     
     return node;
 };
