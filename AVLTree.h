@@ -90,7 +90,7 @@ public:
 
     /// @brief The printing function used by overloading the << operator.
     /// @param os The out stream to be used for printing.
-    /// @param currentNode A pointer to the root node.
+    /// @param currentNode A pointer to the root,
     void reverseOrderTraversalPrint(ostream& os, AVLNode* currentNode) const ;
 
     //Ostream modifer for printing.
