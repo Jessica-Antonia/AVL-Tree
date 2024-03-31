@@ -179,7 +179,7 @@ AVLNode* AVLTree::findParentNode(int key) {
     
     while (current != nullptr)
     {
-        if (current->key == key) {
+        if (key == current->key) {
             return parent;
         } else if (key < current->key) {
             parent = current;
@@ -202,7 +202,7 @@ bool AVLTree::find(int key, string& thing) const {
     
     while (current != nullptr)
     {
-        if (current->key == key) {
+        if (key == current->key) {
             thing = current->thing;
             return true;
         } else if (key < current->key) {
