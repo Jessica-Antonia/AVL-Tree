@@ -166,8 +166,11 @@ void AVLTree::leftRotation(AVLNode*& node) {
     AVLNode* problem = node;
     AVLNode* hook = node->right;
     AVLNode* tempNode = node->left;
-    AVLNode* parent;
+    AVLNode* parent = findParentNode(node->key);
 
+    
+
+    
 
 
 };
