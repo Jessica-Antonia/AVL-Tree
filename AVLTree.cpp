@@ -82,6 +82,16 @@ AVLNode* AVLTree::insertHelper(AVLNode*& node, AVLNode*& newestNode) {
     cout << "Height: " << balanceFactor << endl;
     balanceFactor = getBalance(node);
     cout << "BF: " << balanceFactor << endl;
+
+    AVLNode* parent = findParentNode(node->key);
+    node->print(cout);
+    parent->print(cout);
+
+    if (balanceFactor < -1 || balanceFactor > 2)
+    {
+        /* code */
+    }
+    
     
     return node;
 };
@@ -137,31 +147,49 @@ int AVLTree::getBalance(AVLNode*& current) {
 int AVLTree::AVLTreeUpdateHeight(AVLNode*& current) {
 
     int leftHeight = -1;
-    if ((current != nullptr) && (current->left != nullptr)){
-
+    if ((current != nullptr) && (current->left != nullptr))
+    {
         leftHeight = current->left->height;
     }
     int rightHeight = -1;
-    if ((current != nullptr) && (current->right != nullptr)) {
-
+    if ((current != nullptr) && (current->right != nullptr)) 
+    {
         rightHeight = current->right->height;
     }
     
     return current->height = max(leftHeight, rightHeight) + 1;  
 };
 
-/// @brief The total number of nodes in the tree.
-/// @return The integer for the number of nodes.
-int AVLTree::getSize() const {
+void AVLTree::leftRotation(AVLNode*& node) {
 
-    return size;
+    int key = node->key;
+    AVLNode* problem = node;
+    AVLNode* hook = node->right;
+    AVLNode* tempNode = node->left;
+    AVLNode* parent;
+
+
+
 };
 
-/// @brief The height of the tree.
-/// @return The integer for the height of the tree.
-int AVLTree::getHeight() const {
+AVLNode* AVLTree::findParentNode(int key) {
 
-    return height;
+    AVLNode* current = root;
+    AVLNode* parent = root;
+    
+    while (current != nullptr)
+    {
+        if (current->key == key) {
+            return parent;
+        } else if (key < current->key) {
+            parent = current;
+            current = current->left;
+        } else if (key > current->key) {
+            parent = current;
+            current = current->right;
+        }
+    }
+    return parent;
 };
 
 /// @brief Finds a key if it exists in the tree.
@@ -184,6 +212,20 @@ bool AVLTree::find(int key, string& thing) const {
         }
     }
     return false;
+};
+
+/// @brief The total number of nodes in the tree.
+/// @return The integer for the number of nodes.
+int AVLTree::getSize() const {
+
+    return size;
+};
+
+/// @brief The height of the tree.
+/// @return The integer for the height of the tree.
+int AVLTree::getHeight() const {
+
+    return height;
 };
 
 /// @brief Finds all values in the tree within the range given.

@@ -60,6 +60,16 @@ public:
     /// @return The height to be returned.
     int AVLTreeUpdateHeight(AVLNode*& node);
 
+    void leftRotation(AVLNode*& node);
+
+    AVLNode* findParentNode(int key);
+
+    /// @brief Finds a key if it exists in the tree.
+    /// @param key The key for the key/value pair.
+    /// @param thing The value for the key/value pair.
+    /// @return True if found and false if not.
+    bool find(int key, string& thing) const;
+
     /// @brief The total number of nodes in the tree.
     /// @return The integer for the number of nodes.
     int getSize() const;
@@ -67,12 +77,6 @@ public:
     /// @brief The height of the tree.
     /// @return The integer for the height of the tree.
     int getHeight() const;
-
-    /// @brief Finds a key if it exists in the tree.
-    /// @param key The key for the key/value pair.
-    /// @param thing The value for the key/value pair.
-    /// @return True if found and false if not.
-    bool find(int key, string& thing) const;
 
     /// @brief Finds all values in the tree within the range given.
     /// @param keyStart The lower limit for searching.
