@@ -94,17 +94,14 @@ bool AVLTree::insert(int key, string thing) {
 
     bool existingKey = find(key, thing);
 
-    if (existingKey == true)
+    if (existingKey == false)
     {
-        return false;
-    } else {
-        
         AVLNode* newestNode = new AVLNode(key, thing);
         insertHelper(root, newestNode);
+        return true;
+    } else {
+        return false;
     }
-
-    
-    return true;
 };
 
 /// @brief Calculates the balance of each node.
