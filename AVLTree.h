@@ -18,6 +18,10 @@ private:
     int height = 0;
     AVLNode* root = nullptr;
 
+    static int nodeHeight(AVLNode* node) {
+        return (node == nullptr) ? -1 : node->height;  
+    }
+
 public:
 
     /// @brief No argument constructor. 

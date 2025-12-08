@@ -30,6 +30,22 @@ AVLNode::AVLNode(int aKey, string aThing):
 
 { }
 
+int AVLNode::getKey() const {
+    return key;
+}
+
+const string& AVLNode::getThing() const {
+    return thing;
+}
+
+AVLNode* AVLNode::getLeft() const {
+    return left;
+}
+
+AVLNode* AVLNode::getRight() const {
+    return right;
+}
+
 /// @brief Printing function for each node.
 /// @param os The ostream object.
 void AVLNode::print(ostream& os) const {

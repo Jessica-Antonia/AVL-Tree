@@ -10,9 +10,9 @@ using namespace std;
 /// included print and ostream functions for testing the class. 
 class AVLNode {
 
-public: 
+private: 
 
-    //Public variables for the AVLNode object.
+    //Private variables for the AVLNode object.
     int key = 0;
     int height = 0;
     int balance = 0;
@@ -20,11 +20,21 @@ public:
     AVLNode* left = nullptr;
     AVLNode* right = nullptr;
 
+public:
+
     //No argument constructor.
     AVLNode();
 
     //Construtor that takes a key and a string for the AVLNode object.
     AVLNode(int key, string thing);
+
+    int getKey() const;
+
+    const string& getThing() const;
+
+    AVLNode* getLeft() const;
+
+    AVLNode* getRight() const;
 
     //Printing function.
     void print(ostream& os) const;
