@@ -7,9 +7,9 @@
 /// @brief No argument constructor initialzes all variables to either -1 or 
 /// nullptr.
 AVLNode::AVLNode():
-    key(0),
-    height(0),
-    thing("0"),
+    key(-1),
+    height(-1),
+    thing("-1"),
     left(nullptr),
     right(nullptr)    
 
@@ -27,26 +27,3 @@ AVLNode::AVLNode(int aKey, string aThing):
     right(nullptr)    
 
 { }
-
-/// @brief Printing function for each node.
-/// @param os The ostream object.
-void AVLNode::print(ostream& os) const {
-
-    string tabThings = "\t\t\t\t\t\t\t\t";
-
-    for (size_t i = 0; i < (size_t)this->height; i++)
-    {
-        tabThings.pop_back();
-        tabThings.pop_back();
-    }
-    
-    os << tabThings << "key: " << this->key << ", string: " << this->thing <<
-        ", height: " << this->height << endl;
-}
-
-/// The operator overloading function allows printing for each node.
-ostream& operator<<(ostream& os, const AVLNode& n) {
-
-    n.print(os);
-    return os;
-}
