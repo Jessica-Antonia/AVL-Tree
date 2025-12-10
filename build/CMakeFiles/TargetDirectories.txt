@@ -1,3 +1,0 @@
-/home/jessica/MyRepo/AVL-Tree/build/CMakeFiles/avl.dir
-/home/jessica/MyRepo/AVL-Tree/build/CMakeFiles/edit_cache.dir
-/home/jessica/MyRepo/AVL-Tree/build/CMakeFiles/rebuild_cache.dir
